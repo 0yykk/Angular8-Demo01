@@ -1,0 +1,34 @@
+.carousel {
+  padding: 10px 0;
+  background-color: #001529;
+}
+.carousel .wrap {
+  position: relative;
+}
+.carousel .wrap .dot {
+  display: block;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  background: url('./banner.png') 3px -343px;
+  cursor: pointer;
+}
+.carousel .wrap .dot.active {
+  background-position: -16px -343px;
+}
+.carousel .wrap .arrow {
+  display: block;
+  position: absolute;
+  width: 37px;
+  top: 50%;
+  margin-top: -20px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+.carousel .wrap .arrow.left {
+  left: -68px;
+}
+.carousel .wrap .arrow.right {
+  right: -68px;
+}
