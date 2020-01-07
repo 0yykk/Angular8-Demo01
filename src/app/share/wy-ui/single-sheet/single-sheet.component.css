@@ -1,0 +1,48 @@
+.cover {
+  position: relative;
+  display: block;
+  height: 140px;
+}
+.cover img {
+  height: 100%;
+}
+.cover .bottom {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #000;
+  color: #fff;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 8px;
+}
+.cover .bottom .num span {
+  margin-left: 8px;
+  vertical-align: text-bottom;
+}
+.cover .bottom .icon {
+  display: inline-block;
+  width: 14px;
+  height: 11px;
+  background: url('./iconall.png') no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+}
+.cover .bottom .icon.erji {
+  background-position: 0 -24px;
+}
+.cover .bottom .icon.play {
+  width: 16px;
+  height: 17px;
+  background-position: 0 0;
+}
+.cover .bottom .icon.play:hover {
+  background-position: 0 -60px;
+}
+.dec {
+  display: block;
+  margin-top: 8px;
+  cursor: pointer;
+}

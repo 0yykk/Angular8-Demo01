@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private homeserve: HomeService) {
     this.getBanners();
+    this.getHotTag();
+    this.getPersonalSheetList();
   }
 
   private getBanners() {
