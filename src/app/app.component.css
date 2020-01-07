@@ -1,0 +1,37 @@
+#app .layout .header .wrap {
+  display: flex;
+  justify-content: space-between;
+  width: 1100px;
+}
+#app .layout .header .wrap .left {
+  display: flex;
+}
+#app .layout .header .wrap .left h1 {
+  width: 157px;
+  color: #d3d3d3;
+  font-size: 26px;
+  margin-bottom: 0;
+  margin-right: 20px;
+  text-align: center;
+}
+#app .layout .header .wrap .left ul {
+  height: 64px;
+  line-height: 64px;
+}
+#app .layout .header .wrap .right {
+  display: flex;
+}
+#app .layout .header .wrap .right .member {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+#app .layout .content {
+  background-color: #f2f2f2;
+}
+#app .layout .footer {
+  text-align: center;
+}
+:host ::ng-deep .ant-back-top {
+  bottom: 80px;
+}
