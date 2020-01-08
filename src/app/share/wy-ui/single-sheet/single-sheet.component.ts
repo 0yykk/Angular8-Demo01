@@ -10,6 +10,8 @@ import { SongSheet } from 'src/app/service/data-types/common.types';
 export class SingleSheetComponent implements OnInit {
 
 @Input() sheet: SongSheet;
+
+// tslint:disable-next-line: no-output-on-prefix
 @Output() onPlay = new EventEmitter<number>();
   constructor() { }
 

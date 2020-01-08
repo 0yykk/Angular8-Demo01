@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HomeService } from 'src/app/service/home.service';
-import { Banner, HotTag, SongSheet } from 'src/app/service/data-types/common.types';
+import { Banner, HotTag, SongSheet, Singer } from 'src/app/service/data-types/common.types';
 import { NzCarouselComponent } from 'ng-zorro-antd';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/internal/operators';
+import { SheetService } from 'src/app/service/sheet.service';
 
 @Component({
   selector: 'app-home',
@@ -13,29 +15,21 @@ export class HomeComponent implements OnInit {
   banners: Banner[];
   hotTags: HotTag[];
   songSheetList: SongSheet[];
+  singers: Singer[];
+
   @ViewChild(NzCarouselComponent, { static: true }) private nzCarousel: NzCarouselComponent;
 
-  constructor(private homeserve: HomeService) {
-    this.getBanners();
-    this.getHotTag();
-    this.getPersonalSheetList();
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private sheetServe: SheetService
+    ) {
+      this.route.data.pipe(map(res => res.homeDatas)).subscribe(([banners, hotTags, songSheetList, singers]) => {
+        this.banners = banners;
+        this.hotTags = hotTags;
+        this.songSheetList = songSheetList;
+        this.singers = singers;
+      });
 
-  private getBanners() {
-    this.homeserve.getBanners().subscribe(banners => {
-      this.banners = banners;
-    });
-  }
-
-  private getHotTag() {
-    this.homeserve.getHotTags().subscribe(hotTags => {
-      this.hotTags = hotTags;
-    });
-  }
-  private getPersonalSheetList() {
-    this.homeserve.getPersonalSheetList().subscribe(songSheetList => {
-      this.songSheetList = songSheetList;
-    });
   }
   ngOnInit() {
   }
@@ -45,5 +39,11 @@ export class HomeComponent implements OnInit {
   }
   onChangeSlide(type: 'pre' | 'next') {
     this.nzCarousel[type]();
+  }
+  onPlaySheet(id: number) {
+    console.log('id:', id);
+    this.sheetServe.playSheet(id).subscribe(res => {
+      console.log('res:', res);
+    });
   }
 }

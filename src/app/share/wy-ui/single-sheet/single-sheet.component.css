@@ -26,7 +26,7 @@
   display: inline-block;
   width: 14px;
   height: 11px;
-  background: url('./iconall.png') no-repeat;
+  background: url('src\assets\images\iconall.png') no-repeat;
   cursor: pointer;
   overflow: hidden;
 }

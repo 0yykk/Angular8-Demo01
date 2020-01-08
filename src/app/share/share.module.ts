@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { WyUiModule } from './wy-ui/wy-ui.module';
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     NgZorroAntdModule,
@@ -16,7 +15,8 @@ import { WyUiModule } from './wy-ui/wy-ui.module';
     CommonModule,
     NgZorroAntdModule,
     FormsModule,
-    WyUiModule
+    WyUiModule,
   ]
+
 })
 export class ShareModule { }

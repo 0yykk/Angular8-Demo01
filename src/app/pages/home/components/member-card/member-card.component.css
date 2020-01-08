@@ -1,0 +1,92 @@
+.member .login {
+  height: 126px;
+  background: url("../../../../../assets/images/index.png") no-repeat;
+}
+.member .login p {
+  width: 205px;
+  margin: 0 auto;
+  padding: 16px 0;
+  line-height: 22px;
+  font-size: 12px;
+}
+.member .login .btn {
+  display: block;
+  color: #fff;
+  width: 100px;
+  height: 30px;
+  margin: 0 auto;
+  background: url("../../../../../assets/images/index.png") no-repeat 0 -195px;
+  text-shadow: 0 1px 0 #8a060b;
+  border-color: #f5222d;
+}
+.member .n-myinfo {
+  height: 184px;
+  padding-top: 20px;
+  background: url("../../../../../assets/images/index.png") no-repeat 0 -270px;
+}
+.member .n-myinfo .f-cb .head {
+  position: relative;
+  float: left;
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+  padding: 2px;
+  background: #fff;
+  border: 1px solid #dadada;
+}
+.member .n-myinfo .f-cb .info {
+  float: left;
+  width: 115px;
+  margin-left: 12px;
+}
+.member .n-myinfo .f-cb .info .lv {
+  margin: 5px 0 10px 0;
+}
+.member .n-myinfo .f-cb .info .lv .u-icn2 {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  background: url("../../../../../assets/images/icon2.png") no-repeat 0 9999px;
+}
+.member .n-myinfo .f-cb .info .lv .u-lv {
+  height: 17px;
+  padding-left: 25px;
+  line-height: 18px;
+  color: #999;
+  font-weight: bold;
+  font-style: italic;
+  background-position: -130px -64px;
+}
+.member .n-myinfo .f-cb .info .lv .u-lv .lvright {
+  float: right;
+  width: 8px;
+  height: 17px;
+  background-position: -192px -64px;
+}
+.member .n-myinfo .dny {
+  margin: 12px 0 0 20px;
+  color: #666;
+}
+.member .n-myinfo .dny li {
+  float: left;
+  height: 40px;
+  padding: 0 18px;
+  border-right: 1px solid #e4e4e4;
+}
+.member .n-myinfo .dny li.fst {
+  padding-left: 0;
+}
+.member .n-myinfo .dny li.lst {
+  padding-right: 0;
+  border-right: none;
+}
+.member .n-myinfo .dny li strong {
+  display: block;
+  max-width: 40px;
+  font-size: 20px;
+  font-weight: normal;
+}
+.member .n-myinfo .dny li span {
+  margin-left: 2px;
+}

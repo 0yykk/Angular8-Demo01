@@ -1,0 +1,57 @@
+.wy-slider {
+  height: 9px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  position: relative;
+  background: url('src/assets/images/statbar.png') right 0;
+  cursor: pointer;
+  /* 垂直 */
+}
+.wy-slider .wy-slider-track {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: url('src/assets/images/statbar.png') left -66px;
+}
+.wy-slider .wy-slider-track.buffer {
+  background-position: right -30px;
+}
+.wy-slider .wy-slider-handle {
+  position: absolute;
+  margin-top: -7px;
+  margin-left: -12px;
+  display: inline-block;
+  width: 22px;
+  height: 24px;
+  background: url('src/assets/images/iconall.png') no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  background-position: 0 -250px;
+}
+.wy-slider.wy-slider-vertical {
+  width: 4px;
+  height: 100%;
+  background-color: #000000a6;
+  background-image: none;
+}
+.wy-slider.wy-slider-vertical .wy-slider-track {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background: url('src/assets/images/playbar.png') -40px bottom;
+}
+.wy-slider.wy-slider-vertical .wy-slider-handle {
+  margin-bottom: -10px;
+  margin-left: -7px;
+  bottom: 0;
+  display: inline-block;
+  width: 18px;
+  height: 20px;
+  background: url('src/assets/images/iconall.png') no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  background-position: -40px -280px;
+}

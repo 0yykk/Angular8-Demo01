@@ -40,13 +40,29 @@
                              class="sheet-item"
                              *ngFor="let item of songSheetList"
                              [sheet]="item"
+                             (onPlay)="onPlaySheet($event)"
                             ></app-single-sheet>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="right">
-                right
+                
+                <app-member-card></app-member-card>
+                <div class="settled-singer">
+                    <div class="tit"><b>Singer</b></div>
+                    <div class="list">
+                        <div class="card" *ngFor="let item of singers">
+                            <div class="pic">
+                                <img [src]="item.picUrl" [alt]="item.name">
+                            </div>
+                            <div class="txt">
+                                <b class="ellipsis">{{item.name}}</b>
+                                <span>Album Count：{{item.albumSize}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
