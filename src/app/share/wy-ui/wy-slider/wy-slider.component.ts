@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ElementRef, ViewChild, Input, Inject, Output, EventEmitter, ChangeDetectorRef} from '@angular/core';
+// tslint:disable-next-line: max-line-length
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ElementRef, ViewChild, Input, Inject, Output, EventEmitter, ChangeDetectorRef, OnDestroy, forwardRef} from '@angular/core';
 import { SliderEventObserverConfig, SliderValue } from './wy-slider-types';
 import { fromEvent, merge, Observable, Subscription } from 'rxjs';
 import { filter, tap, pluck, map, distinctUntilChanged, takeUntil } from 'rxjs/internal/operators';
@@ -6,15 +7,21 @@ import { sliderEvent, getElementOffset } from './wy-slider-helper';
 import { DOCUMENT } from '@angular/common';
 import { limitNumberInRange, getPercent } from 'src/app/utils/number';
 import { inArray } from 'src/app/utils/array';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-wy-slider',
   templateUrl: './wy-slider.component.html',
   styleUrls: ['./wy-slider.component.css'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => WySliderComponent),
+    multi: true
+  }]
 })
-export class WySliderComponent implements OnInit {
+export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccessor {
 
   @Input() wyVertical = false;
   @Input() wyMin = 0;
@@ -26,15 +33,18 @@ export class WySliderComponent implements OnInit {
   private dragStart$: Observable<number>;
   private dragMove$: Observable<number>;
   private dragEnd$: Observable<Event>;
+  // tslint:disable-next-line: variable-name
   private dragStart_: Subscription | null;
+  // tslint:disable-next-line: variable-name
   private dragMove_: Subscription | null;
+  // tslint:disable-next-line: variable-name
   private dragEnd_: Subscription | null;
 
   private isDragging = false;
 
   value: SliderValue = null;
   offset: SliderValue = null;
-  
+
   private sliderDom: HTMLDivElement;
 
 
@@ -42,7 +52,6 @@ export class WySliderComponent implements OnInit {
   constructor(@Inject(DOCUMENT) private doc: Document, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    console.log('el:', this.wySlider.nativeElement);
     this.sliderDom = this.wySlider.nativeElement;
     this.createDraggingObservables();
     this.subscribeDrag(['start']);
@@ -234,6 +243,7 @@ export class WySliderComponent implements OnInit {
   }
 
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy(): void {
     this.unsubscribeDrag();
   }

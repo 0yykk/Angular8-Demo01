@@ -13,7 +13,7 @@ type HomeDataType = [Banner[], HotTag[], SongSheet[], Singer[]];
 
 @Injectable()
 export class HomeResolverService implements Resolve<HomeDataType> {
-    constructor(private homeServe: HomeService, private singerServe: SingerService){}
+    constructor(private homeServe: HomeService, private singerServe: SingerService) {}
 
     resolve(): Observable<HomeDataType> {
         return forkJoin([

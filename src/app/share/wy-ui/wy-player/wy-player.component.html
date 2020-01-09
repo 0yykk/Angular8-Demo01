@@ -6,32 +6,30 @@
     <div class="container">
         <div class="wrap">
             <div class="btns">
-                <i class="prev"></i>
-                <i class="toggle"></i>
-                <i class="next"></i>
+                <i class="prev" (click)="onPrev(currentIndex - 1)"></i>
+                <i class="toggle" [class.playing]="playing" (click)="onToggle()"></i>
+                <i class="next" (click)="onNext(currentIndex +1)"></i>
             </div>
             <div class="head">
-                <img src="" alt="">
+                <img [src]="picUrl">
                 <i class="mask"></i>
             </div>
             <div class="play">
-                <div class="words clearfix hide">
-                    <p class="ellipsis margin-bottom-none">Song Name</p>
+                <div class="words clearfix">
+                    <p class="ellipsis margin-bottom-none">{{currentSong?.name}}</p>
                     <ul class="songs clearfix margin-bottom-none">
-                        <li>
-                            <a>Singer1</a>/
-                        </li>
-                        <li>
-                            <a>Singer2</a>
+                        <li *ngFor="let item of currentSong?.ar; last as isLast">
+                            <a>{{item.name}}</a>
+                            <span [hidden]="isLast">/</span>
                         </li>
                     </ul>
                 </div>
                 <div class="bar">
                     <div class="slider-wrap">
-                        <app-wy-slider></app-wy-slider>
+                        <app-wy-slider [bufferOffset]="bufferOffset" [(ngModel)]="sliderValue" (wyOnAfterChange)="onPercentChange($event)"></app-wy-slider>
                     </div>
                     <span class="time">
-                        <em>02:11</em>/04:35
+                        <em>{{currentTime | formatTime}}</em>/{{duration | formatTime}}
                     </span>
                 </div>
             </div>
@@ -45,7 +43,21 @@
                 <p class="open">
                     <span></span>
                 </p>
+
+                <div class="control-vol">
+                    <app-wy-slider [wyVertical]="true"></app-wy-slider>
+                </div>
             </div>
         </div>
     </div>
+
+
+
+
+    <audio #audio
+        [src]="currentSong?.url"
+        (canplay)="onCanplay()"
+        (timeupdate)="onTimeUpdate($event)"
+    ></audio>
+
 </div>
